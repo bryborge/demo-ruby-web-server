@@ -6,7 +6,7 @@ require_relative 'lib/web_server'
 task default: %w[serve]
 
 task :serve do
-  server = WebServer.new('127.0.0.1', 1234)
+  server = WebServer.new
   
   trap('INT') do
     puts "\nShutting down gracefully ..."

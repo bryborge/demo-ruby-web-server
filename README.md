@@ -20,5 +20,5 @@ production-like environments.
 For testing (w/o a browser):
 
 ```sh
-curl -H "Host: localhost" -H "Accept: */*" -X GET http://localhost:1234
+curl -H "Host: localhost" -H "Accept: */*" -X GET http://localhost:1337
 ```

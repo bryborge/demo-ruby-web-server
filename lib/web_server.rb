@@ -11,7 +11,7 @@ require_relative 'web_server/response_builder'
 # @example
 #   WebServer.new('127.0.0.1', 1234).start
 class WebServer
-  def initialize(host, port)
+  def initialize(host = '127.0.0.1', port = 1337)
     # While you can simply use TCPServer here, I chose to build from a generic
     # Socket to illustrate the concept a bit more thoroughly.
     #   - Resource: https://docs.ruby-lang.org/en/3.2/TCPServer.html
