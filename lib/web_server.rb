@@ -19,8 +19,9 @@ class WebServer
     @server.bind(Addrinfo.tcp(host, port))
     @server.listen(5)
 
-    @host = host
-    @port = port
+    @host     = host
+    @port     = port
+    @shutdown = false
 
     puts "Listening on #{@host}:#{@port}"
   end
@@ -30,13 +31,27 @@ class WebServer
   # @return [void]
   def start
     loop do
-      client, _client_addr_info = @server.accept
+      break if @shutdown
+
+      begin
+        client, _client_addr_info = @server.accept_nonblock
       
-      Thread.new do
-        process(client)
-        client.close
+        Thread.new do
+          process(client)
+          client.close
+        end
+      rescue IO::WaitReadable, Errno::EINTR
+        retry unless @shutdown
       end
     end
+  end
+
+  # Stops the server.
+  # 
+  # @return [void]
+  def stop
+    @shutdown = true
+    @server.close
   end
 
   private
@@ -56,6 +71,3 @@ class WebServer
     client.close
   end
 end
-
-# TODO: Encapsulate this as a factory, or something.
-WebServer.new('127.0.0.1', 1234).start
