@@ -21,4 +21,6 @@ For testing (w/o a browser):
 
 ```sh
 curl -H "Host: localhost" -H "Accept: */*" -X GET http://localhost:1337
+curl -H "Host: localhost" -H "Accept: */*" -X GET http://localhost:1337/about
+curl -H "Host: localhost" -H "Accept: */*" -X GET http://localhost:1337/contact
 ```

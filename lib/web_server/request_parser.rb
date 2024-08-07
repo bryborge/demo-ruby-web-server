@@ -3,6 +3,10 @@
 
 # Parses an HTTP request message.
 class RequestParser
+  # Parses an HTTP request message into its constituent parts.
+  # 
+  # @param [String] request The HTTP request message to parse.
+  # @return [Hash] A hash containing the request method, path, and headers.
   def parse(request)
     method, path, _version = request.lines[0].split(' ')
 
@@ -15,6 +19,10 @@ class RequestParser
 
   private
 
+  # Parses the headers from an HTTP request message.
+  # 
+  # @param [String] request The HTTP request message to parse.
+  # @return [Hash] A hash containing the request headers.
   def parse_headers(request)
     headers = {}
 
