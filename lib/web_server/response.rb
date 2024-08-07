@@ -5,8 +5,15 @@
 # 
 # Resource: https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages
 class Response
+  STATUS_MESSAGES = {
+    200 => "OK",
+    404 => "Not Found",
+    500 => "Internal Server Error",
+  }.freeze
+
   def initialize(code:, data: "", content_type:)
-    @response = "HTTP/1.1 #{code}\r\n" +
+    message  = STATUS_MESSAGES[code] || "Unknown Status"
+    @response = "HTTP/1.1 #{code} #{message}\r\n" +
                 "Content-Type: #{content_type}\r\n" +
                 "Content-Length: #{data.bytesize}\r\n" +
                 "\r\n" +
