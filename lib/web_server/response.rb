@@ -11,13 +11,14 @@ class Response
     500 => "Internal Server Error",
   }.freeze
 
-  def initialize(code:, data: "", content_type:)
+  def initialize(code:, data: "", content_type: "text/plain")
     message  = STATUS_MESSAGES[code] || "Unknown Status"
     @response = "HTTP/1.1 #{code} #{message}\r\n" +
                 "Content-Type: #{content_type}\r\n" +
                 "Content-Length: #{data.bytesize}\r\n" +
                 "\r\n" +
-                "#{data}\r\n"
+                "#{data}" +
+                "\r\n"
   end
 
   # Sends the HTTP response message to the client.
