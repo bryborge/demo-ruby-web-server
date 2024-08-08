@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'socket'
 require 'spec_helper'
 
 require_relative '../lib/web_server/request_parser'
