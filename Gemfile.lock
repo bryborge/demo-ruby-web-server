@@ -2,8 +2,6 @@ GEM
   remote: https://rubygems.org/
   specs:
     diff-lcs (1.5.1)
-    mocha (2.4.5)
-      ruby2_keywords (>= 0.0.5)
     rake (13.2.1)
     rspec (3.13.0)
       rspec-core (~> 3.13.0)
@@ -18,13 +16,11 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
     rspec-support (3.13.1)
-    ruby2_keywords (0.0.5)
 
 PLATFORMS
   x86_64-darwin-22
 
 DEPENDENCIES
-  mocha
   rake (~> 13.2)
   rspec
 
