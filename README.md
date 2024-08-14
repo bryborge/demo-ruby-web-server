@@ -1,4 +1,4 @@
-# Demo: A Simple Web Server in Ruby
+# 💎 Demo: A Simple Web Server
 
 A web (HTTP) server is essentially composed of the following:
 
